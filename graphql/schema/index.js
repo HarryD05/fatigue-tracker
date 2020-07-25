@@ -3,6 +3,7 @@ const { buildSchema } = require("graphql");
 module.exports = buildSchema(`
   type Day {
     _id: ID!
+    date: String
     startTime: String
     endTime: String
     initPhysTiredness: Int
@@ -38,8 +39,8 @@ module.exports = buildSchema(`
   }
   
   type RootMutation {
-    initDay(initDayInput: InitDayInput!): String!
-    setBedTime(time: String!): String!
+    initDay(initDayInput: InitDayInput!): Day!
+    setBedTime(time: String!): Day!
     initLog(category: Int): Log!
     updateLog(updateInput: UpdateInput): Log!
   }

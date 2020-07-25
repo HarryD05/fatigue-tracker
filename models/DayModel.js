@@ -2,13 +2,16 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const DaySchema = new Schema({
+  date: {
+    type: Date,
+    required: true,
+  },
   startTime: {
     type: Date,
     required: true,
   },
   endTime: {
     type: Date,
-    required: true,
   },
   initPhysTiredness: {
     type: Number,
@@ -20,11 +23,9 @@ const DaySchema = new Schema({
   },
   avgPhysTiredness: {
     type: Number,
-    required: true,
   },
   avgMentTiredness: {
     type: Number,
-    required: true,
   },
   logs: {
     type: [Schema.Types.ObjectId],
