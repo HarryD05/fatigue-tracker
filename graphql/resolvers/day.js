@@ -1,11 +1,14 @@
 const Day = require("../../models/DayModel");
+const { transformDay, transformLog } = require('./merge');
 
 module.exports = {
   days: async (args, req) => {
     try {
       const result = await Day.find();
 
-      return result;
+      return result.map(day => {
+        return transformDay(day);
+      });
     } catch (err) {
       throw err;
     }
@@ -33,11 +36,7 @@ module.exports = {
 
       const result = await newDay.save();
 
-      return {
-        ...result,
-        date: new Date(result.date).toISOString(),
-        startTime: new Date(result.startTime).toISOString(),
-      };
+      return transformDay(result);
     } catch (err) {
       throw err;
     }
@@ -52,9 +51,13 @@ module.exports = {
 
       today.endTime = time;
 
+      if (today.logs && today.logs.length > 0) {
+        console.log('Set averages for tiredness');
+      }
+
       await today.save();
 
-      return today;
+      return transformDay(today);
     } catch (err) {
       throw err;
     }

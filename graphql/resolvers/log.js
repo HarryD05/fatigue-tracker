@@ -1,22 +1,24 @@
-const Log = require("../../models/LogModel");
+const Log = require('../../models/LogModel');
+const Day = require('../../models/DayModel');
+const { transformLog, transformLogs } = require('./merge');
 
 module.exports = {
   logs: async (args, req) => {
     try {
       const result = await Log.find();
 
-      return {
-        ...result.doc,
-      };
+      return transformLogs(result);
     } catch (err) {
       throw err;
     }
   },
   initLog: async (args, req) => {
-    const { category } = args;
+    const { category, startTime } = args.initInput;
 
     const logDetails = {
       category,
+      startTime,
+      endTime: null,
       notes: null,
       physTiredness: null,
       mentTiredness: null,
@@ -24,15 +26,23 @@ module.exports = {
 
     try {
       const newLog = new Log(logDetails);
+
+      const days = await Day.find();
+      const today = days[days.length - 1];
+      if (today) {
+        today.logs.push(newLog._id);
+        await today.save();
+      }
+
       await newLog.save();
 
-      return newLog;
+      return transformLog(newLog);
     } catch (err) {
       throw err;
     }
   },
   updateLog: async (args, req) => {
-    const { notes, physTiredness, mentTiredness } = args;
+    const { notes, physTiredness, mentTiredness, endTime } = args.updateInput;
 
     try {
       const logs = await Log.find();
@@ -43,10 +53,11 @@ module.exports = {
         lastLog.notes = notes;
         lastLog.physTiredness = physTiredness;
         lastLog.mentTiredness = mentTiredness;
+        lastLog.endTime = endTime;
 
         await lastLog.save();
 
-        return lastLog;
+        return transformLog(lastLog);
       }
 
       return null;

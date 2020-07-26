@@ -6,17 +6,21 @@ const LogSchema = new Schema({
     type: Number,
     required: true,
   },
+  startTime: {
+    type: Date,
+    required: true
+  },
+  endTime: {
+    type: Date
+  },
   notes: {
     type: String,
-    required: true,
   },
   physTiredness: {
-    type: Number,
-    required: true,
+    type: Number
   },
   mentTiredness: {
-    type: Number,
-    required: true,
+    type: Number
   },
 });
 
