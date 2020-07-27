@@ -5,9 +5,7 @@
 .home {
   list-style: inside;
 
-  h1 {
-    border-bottom: 1px solid var(--grey-border);
-  }
+  
 
   h2 {
     margin-top: 1rem;
@@ -31,5 +29,6 @@ main {
 
   h1 {
     text-align: center;
+    border-bottom: 1px solid var(--grey-border);
   }
 }
