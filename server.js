@@ -1,22 +1,24 @@
 //SETTING UP LIBRARIES
-const express = require("express");
-const mongoose = require("mongoose"); //For databases
-const { graphqlHTTP } = require("express-graphql");
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const { graphqlHTTP } = require('express-graphql');
 
-require("dotenv").config(); //.env file
+require('dotenv').config(); //.env file
 
 //IMPORTING FROM OTHER FILES
-const graphQlSchema = require("./graphql/schema/index");
-const graphQlResolvers = require("./graphql/resolvers/index");
+const graphQlSchema = require('./graphql/schema/index');
+const graphQlResolvers = require('./graphql/resolvers/index');
 
 //SET UP EXPRESS
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 //SETTING UP GRAPHQL
 //the ! means it can't be null (required)
 app.use(
-  "/graphql",
+  '/graphql',
   graphqlHTTP({
     schema: graphQlSchema,
     rootValue: graphQlResolvers,
@@ -25,7 +27,7 @@ app.use(
 );
 
 //SETTING UP MONGOOSE
-console.log("Connecting to MongoDB");
+console.log('Connecting to MongoDB');
 
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -34,7 +36,7 @@ mongoose
   })
   .then(() => {
     //SETTING UP SERVER
-    console.log("Starting server");
+    console.log('Starting server');
 
     const PORT = process.env.PORT || 5000;
 

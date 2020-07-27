@@ -1,0 +1,36 @@
+.day-tile {
+  margin-top: 1rem;
+  border-top: 1px solid #b1b1b1;
+
+  text-align: left;
+
+  h2, button {
+    display: inline;
+  }
+  
+  h3, h4, p {
+    display: inline;
+  }
+
+  .averages, .categories, button {
+    margin-top: 0.5rem;
+  }
+
+  button {
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    
+    background: var(--primary-fg);
+
+    padding: 4px;
+    margin-left: 1rem;
+
+    position: relative;
+    bottom: 4px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
