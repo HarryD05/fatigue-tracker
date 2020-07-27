@@ -13,6 +13,19 @@ module.exports = {
       throw err;
     }
   },
+  today: async (args, req) => {
+    try {
+      const result = await Day.find();
+
+      if (result.length > 0) {
+        return transformDay(result[result.length - 1]);
+      }
+
+      return null;
+    } catch (err) {
+      throw err;
+    }
+  },
   initDay: async (args, req) => {
     const {
       startTime,

@@ -44,6 +44,7 @@ module.exports = buildSchema(`
   type RootQuery {
     days: [Day]!
     logs: [Log]!
+    today: Day
   }
   
   type RootMutation {

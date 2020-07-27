@@ -2,9 +2,34 @@
   color: #22f;
 }
 
-.logs {
-  width: 35rem;
+.home {
+  list-style: inside;
+
+  h1 {
+    border-bottom: 1px solid var(--grey-border);
+  }
+
+  h2 {
+    margin-top: 1rem;
+  }
+}
+
+.today {
+  h1 {
+    border-bottom: 1px solid var(--grey-border);
+  }
+  
+  h2 {
+    text-align: center;
+  }
+}
+
+main {
+  width: 40rem;
   max-width: 80%;
   margin: auto;
-  text-align: center;
+
+  h1 {
+    text-align: center;
+  }
 }
