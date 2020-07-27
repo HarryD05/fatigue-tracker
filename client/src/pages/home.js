@@ -8,15 +8,18 @@ const Home = props => {
     <div className="home">
       <h1>Home</h1>
 
-      <h2>Aim</h2>
-      <p>Track activity & tiredness througout the day - to see what activities have the greatest toll on fatigue.</p>
+      <div className="aim">
+        <h2>Aim</h2>
+        <p>Track activity & tiredness througout the day - to see what activities have the greatest toll on fatigue.</p>
+      </div>
 
       <h2>4 types of activity: </h2>
       <ul>
-        <li><b>Required</b> e.g. eating, napping &time with helpers</li>
+        <li><b>Required</b> e.g. eating & time with helpers</li>
+        <li><b>Resting</b> e.g. napping in bed or sitting with no stimulation</li>
         <li><b>Rehabilitation</b> e.g. physio & exercise</li>
-        <li><b>Socialising</b> e.g. phone call, facebook portal, facetime, posting on facebook</li>
-        <li><b>Extra</b> e.g. reading, watching TV, listening to radio, browsing facebook</li>
+        <li><b>Socialising</b> e.g. phone call, facebook portal, facetime & posting on facebook</li>
+        <li><b>Non-productive</b> e.g. reading, watching TV, listening to radio & browsing facebook</li>
       </ul>
 
       <h2>Logs</h2>
