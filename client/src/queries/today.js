@@ -1,9 +1,10 @@
 import { gql } from 'apollo-boost';
 
 const today = gql`
-  {
+  query {
     today {
       _id
+      date
       startTime
       endTime
       initMentTiredness

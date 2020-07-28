@@ -13,7 +13,7 @@ const Home = props => {
         <p>Track activity & tiredness througout the day - to see what activities have the greatest toll on fatigue.</p>
       </div>
 
-      <h2>4 types of activity: </h2>
+      <h2>Types of activity: </h2>
       <ul>
         <li><b>Required</b> e.g. eating & time with helpers</li>
         <li><b>Resting</b> e.g. napping in bed or sitting with no stimulation</li>
