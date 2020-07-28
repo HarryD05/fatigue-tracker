@@ -16,7 +16,6 @@ module.exports = buildSchema(`
   type Log {
     _id: ID!
     category: Int
-    notes: String
     physTiredness: Int
     mentTiredness: Int
     startTime: String
@@ -30,7 +29,6 @@ module.exports = buildSchema(`
   }
 
   input UpdateInput {
-    notes: String
     physTiredness: Int
     mentTiredness: Int
     endTime: String
@@ -50,8 +48,8 @@ module.exports = buildSchema(`
   type RootMutation {
     initDay(initDayInput: InitDayInput!): Day!
     setBedTime(time: String!): Day!
-    initLog(initInput: InitInput): Log!
-    updateLog(updateInput: UpdateInput): Log!
+    initLog(initInput: InitInput!): Log!
+    updateLog(updateInput: UpdateInput!): Log!
   }
 
   schema {

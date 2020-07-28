@@ -16,7 +16,6 @@ const initDay = gql`
         startTime
         endTime
         category
-        notes
         physTiredness
         mentTiredness
       }

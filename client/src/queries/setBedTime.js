@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
-const getDays = gql`
-  query {
-    days {
+const setBedTime = gql`
+  mutation setBedTime($time: String!){
+    setBedTime(time: $time) {
       _id
       date
       startTime
@@ -23,4 +23,4 @@ const getDays = gql`
   }
 `;
 
-export default getDays;
+export default setBedTime;

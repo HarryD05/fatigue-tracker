@@ -16,7 +16,6 @@ const today = gql`
         startTime
         endTime
         category
-        notes
         physTiredness
         mentTiredness
       }

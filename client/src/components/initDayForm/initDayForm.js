@@ -11,8 +11,8 @@ import './initDayForm.scss';
 const InitDayForm = props => {
   const [initInput, setInitInput] = useState({
     startTime: null,
-    initPhysTiredness: null,
-    initMentTiredness: null
+    initPhysTiredness: 9,
+    initMentTiredness: 9
   })
 
   const changeHandler = e => {

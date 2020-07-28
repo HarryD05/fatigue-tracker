@@ -11,7 +11,7 @@ const DayTile = props => {
   const { day } = props;
   const dayString = formatDate(new Date(day.startTime));
   const awakeTime = formatTime(new Date(day.startTime));
-  const bedTime = formatTime(new Date(day.endTime));
+  const bedTime = day.endTime ? formatTime(new Date(day.endTime)) : 'Not yet submitted';
 
   return (
     <div className="day-tile">

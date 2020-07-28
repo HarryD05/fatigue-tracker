@@ -1,5 +1,5 @@
 //React dependencies
-import React, { useState } from 'react';
+import React from 'react';
 
 //Apollo dependencies
 import { graphql } from 'react-apollo';
@@ -13,20 +13,25 @@ import { formatDate } from './../helpers/date';
 
 //Components
 import InitDayForm from './../components/initDayForm/initDayForm';
+import NewLogForms from './../components/newLogForms/newLogForms';
 
 const Today = props => {
   const { today, loading } = props.data;
 
-  let needToInit = false;
+  let needToInit = true;
+  let firstLog = false;
+  let completed = false;
   if (today) {
-    needToInit = (new Date(today.date).getDate() !== new Date().getDate())
+    needToInit = (new Date(today.date).getDate() !== new Date().getDate());
+    firstLog = today.logs.length === 0;
+    completed = (today.endTime ? true : false);
   }
 
-  const onInitSubmit = () => {
+  const onSubmit = message => {
     props.data.refetch();
-  }
 
-  console.log(needToInit);
+    alert((message) ? message : 'Successful');
+  }
 
   return (
     <div className="today">
@@ -35,7 +40,9 @@ const Today = props => {
       <br />
 
       {loading ? <h2 className="loading">Loading...</h2> : null}
-      {needToInit ? <InitDayForm onComplete={onInitSubmit} /> : null}
+      {!loading && needToInit ? <InitDayForm onComplete={onSubmit} /> : null}
+      {!loading && !needToInit && today && !completed ? <NewLogForms onComplete={onSubmit} isFirstLog={firstLog} startTime={today.startTime} /> : null}
+      {!loading && !needToInit && completed ? <h2>Completed</h2> : null}
     </div>
   )
 }

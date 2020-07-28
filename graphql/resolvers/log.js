@@ -19,7 +19,6 @@ module.exports = {
       category,
       startTime,
       endTime: null,
-      notes: null,
       physTiredness: null,
       mentTiredness: null,
     };
@@ -42,7 +41,7 @@ module.exports = {
     }
   },
   updateLog: async (args, req) => {
-    const { notes, physTiredness, mentTiredness, endTime } = args.updateInput;
+    const { physTiredness, mentTiredness, endTime } = args.updateInput;
 
     try {
       const logs = await Log.find();
@@ -50,7 +49,6 @@ module.exports = {
       if (logs.length > 1) {
         const lastLog = logs[logs.length - 2];
 
-        lastLog.notes = notes;
         lastLog.physTiredness = physTiredness;
         lastLog.mentTiredness = mentTiredness;
         lastLog.endTime = endTime;
