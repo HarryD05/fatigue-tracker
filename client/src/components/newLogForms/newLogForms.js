@@ -8,13 +8,13 @@ import { flowRight as compose } from 'lodash';
 //Queries
 import initLog from './../../queries/initLog';
 import updateLog from './../../queries/updateLog';
+import completeLogs from './../../queries/completeLogs';
 import setBedTime from './../../queries/setBedTime';
 
 //Styling
 import './newLogForms.scss';
 
 const NewLogForms = props => {
-  console.log(props.isFirstLog);
   const [initLog, setInitLog] = useState({
     category: null,
     physTiredness: 9,
@@ -56,8 +56,7 @@ const NewLogForms = props => {
         props.onComplete('Log submitted!');
       })
     } else {
-      document.getElementById('bedtime-form').reset();
-      props.updateLog({
+      props.completeLogs({
         variables: {
           updateInput: {
             physTiredness: Number(finalLog.physTiredness),
@@ -146,12 +145,12 @@ const NewLogForms = props => {
 
         <div className="form-group">
           <label htmlFor="physTiredness">physical tiredness: </label>
-          <input type="range" min="0" max="9" step="1" name="physTiredness" onChange={e => changeHandler(e, true)} />
+          <input type="range" min="0" max="9" step="1" defaultValue="9" name="physTiredness" onChange={e => changeHandler(e, true)} />
         </div>
 
         <div className="form-group">
           <label htmlFor="mentTiredness">mental tiredness: </label>
-          <input type="range" min="0" max="9" step="1" name="mentTiredness" onChange={e => changeHandler(e, true)} />
+          <input type="range" min="0" max="9" step="1" defaultValue="9" name="mentTiredness" onChange={e => changeHandler(e, true)} />
         </div>
 
         <div className="init-container">
@@ -165,5 +164,6 @@ const NewLogForms = props => {
 export default compose(
   graphql(initLog, { name: 'initLog' }),
   graphql(updateLog, { name: 'updateLog' }),
+  graphql(completeLogs, { name: 'completeLogs' }),
   graphql(setBedTime, { name: 'setBedTime' })
 )(NewLogForms);

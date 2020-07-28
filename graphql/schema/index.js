@@ -50,6 +50,7 @@ module.exports = buildSchema(`
     setBedTime(time: String!): Day!
     initLog(initInput: InitInput!): Log!
     updateLog(updateInput: UpdateInput!): Log!
+    completeLogs(updateInput: UpdateInput!): Log!
   }
 
   schema {

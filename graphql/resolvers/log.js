@@ -63,4 +63,27 @@ module.exports = {
       throw err;
     }
   },
+  completeLogs: async (args, req) => {
+    const { physTiredness, mentTiredness, endTime } = args.updateInput;
+
+    try {
+      const logs = await Log.find();
+
+      if (logs.length > 0) {
+        const lastLog = logs[logs.length - 1];
+
+        lastLog.physTiredness = physTiredness;
+        lastLog.mentTiredness = mentTiredness;
+        lastLog.endTime = endTime;
+
+        await lastLog.save();
+
+        return transformLog(lastLog);
+      }
+
+      return null;
+    } catch (err) {
+      throw err;
+    }
+  },
 };
