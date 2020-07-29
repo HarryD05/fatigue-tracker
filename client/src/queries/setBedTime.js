@@ -9,6 +9,8 @@ const setBedTime = gql`
       endTime
       initMentTiredness
       initPhysTiredness
+      endMentTiredness
+      endPhysTiredness
       avgMentTiredness
       avgPhysTiredness
       logs {
@@ -16,8 +18,10 @@ const setBedTime = gql`
         startTime
         endTime
         category
-        physTiredness
-        mentTiredness
+        initPhysTiredness
+        initMentTiredness
+        endPhysTiredness
+        endMentTiredness
       }
     }
   }

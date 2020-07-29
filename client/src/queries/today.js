@@ -9,6 +9,8 @@ const today = gql`
       endTime
       initMentTiredness
       initPhysTiredness
+      endMentTiredness
+      endPhysTiredness
       avgMentTiredness
       avgPhysTiredness
       logs {
@@ -16,8 +18,10 @@ const today = gql`
         startTime
         endTime
         category
-        physTiredness
-        mentTiredness
+        initPhysTiredness
+        initMentTiredness
+        endPhysTiredness
+        endMentTiredness
       }
     }
   }

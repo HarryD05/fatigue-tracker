@@ -20,7 +20,11 @@ const formatDate = date => {
 }
 
 const formatTime = date => {
-  return `${date.getHours()}:${date.getMinutes()}`;
+  return `${ensureTwoDigits(date.getHours())}:${ensureTwoDigits(date.getMinutes())}`;
+}
+
+const ensureTwoDigits = num => {
+  return num.toString().length === 2 ? num : '0' + num;
 }
 
 exports.formatDate = formatDate;

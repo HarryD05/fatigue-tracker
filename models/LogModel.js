@@ -16,10 +16,16 @@ const LogSchema = new Schema({
   notes: {
     type: String,
   },
-  physTiredness: {
+  initPhysTiredness: {
     type: Number
   },
-  mentTiredness: {
+  initMentTiredness: {
+    type: Number
+  },
+  endPhysTiredness: {
+    type: Number
+  },
+  endMentTiredness: {
     type: Number
   },
 });

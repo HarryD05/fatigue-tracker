@@ -7,8 +7,10 @@ const completeLogs = gql`
       startTime
       endTime
       category
-      physTiredness
-      mentTiredness
+      initPhysTiredness
+      initMentTiredness
+      endPhysTiredness
+      endMentTiredness
     }
   }
 `;

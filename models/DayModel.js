@@ -21,6 +21,12 @@ const DaySchema = new Schema({
     type: Number,
     required: true,
   },
+  endPhysTiredness: {
+    type: Number
+  },
+  endMentTiredness: {
+    type: Number
+  },
   avgPhysTiredness: {
     type: Number,
   },

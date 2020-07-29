@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost';
 
-const initLog = gql`
-  mutation initLog($initInput: InitInput!){
-    initLog(initInput: $initInput) {
+const log = gql`
+  query log($logId: ID!){
+    log(logId: $logId){
       _id 
       startTime
       endTime
@@ -15,4 +15,4 @@ const initLog = gql`
   }
 `;
 
-export default initLog;
+export default log;

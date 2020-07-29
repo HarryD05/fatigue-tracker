@@ -10,9 +10,11 @@ import initLog from './../../queries/initLog';
 import updateLog from './../../queries/updateLog';
 import completeLogs from './../../queries/completeLogs';
 import setBedTime from './../../queries/setBedTime';
+import calculateAverages from './../../queries/calculateAverages';
 
 //Styling
 import './newLogForms.scss';
+import DayTile from '../dayTile/dayTile';
 
 const NewLogForms = props => {
   const [initLog, setInitLog] = useState({
@@ -65,8 +67,14 @@ const NewLogForms = props => {
           }
         }
       }).then(() => {
-        props.onComplete('Final log set, you\'re done for the day!');
-      })
+        props.calculateAverages({
+          variables: {
+            date: new Date()
+          }
+        }).then(() => {
+          props.onComplete('Final log set, you\'re done for the day!');
+        })
+      });
     }
   }
 
@@ -165,5 +173,6 @@ export default compose(
   graphql(initLog, { name: 'initLog' }),
   graphql(updateLog, { name: 'updateLog' }),
   graphql(completeLogs, { name: 'completeLogs' }),
-  graphql(setBedTime, { name: 'setBedTime' })
+  graphql(setBedTime, { name: 'setBedTime' }),
+  graphql(calculateAverages, { name: 'calculateAverages' })
 )(NewLogForms);

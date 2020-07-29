@@ -8,6 +8,8 @@ module.exports = buildSchema(`
     endTime: String
     initPhysTiredness: Int
     initMentTiredness: Int
+    endPhysTiredness: Int
+    endMentTiredness: Int
     avgPhysTiredness: Float
     avgMentTiredness: Float
     logs: [Log]
@@ -16,8 +18,10 @@ module.exports = buildSchema(`
   type Log {
     _id: ID!
     category: Int
-    physTiredness: Int
-    mentTiredness: Int
+    initPhysTiredness: Int
+    initMentTiredness: Int
+    endPhysTiredness: Int
+    endMentTiredness: Int
     startTime: String
     endTime: String
   }
@@ -43,6 +47,7 @@ module.exports = buildSchema(`
     days: [Day]!
     logs: [Log]!
     today: Day
+    log(logId: ID!): Log
   }
   
   type RootMutation {
@@ -51,6 +56,7 @@ module.exports = buildSchema(`
     initLog(initInput: InitInput!): Log!
     updateLog(updateInput: UpdateInput!): Log!
     completeLogs(updateInput: UpdateInput!): Log!
+    calculateAverages(date: String!): Day!
   }
 
   schema {

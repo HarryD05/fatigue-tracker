@@ -27,7 +27,6 @@ const Home = props => {
       <ul>
         <li>Select what type of activity it is</li>
         <li>Log your current tiredness (physical & mental)</li>
-        <li>Add any extra notes (optional)</li>
       </ul>
     </div>
   )

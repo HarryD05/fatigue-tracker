@@ -27,21 +27,34 @@ const transformLogs = async logIDs => {
   try {
     const logs = await Log.find({ _id: { $in: logIDs } });
 
-    return logs.map(log => {
-      return singleLog(log);
-    });
+    const result = await Promise.all(logs.map(async log => {
+      const logResult = await singleLog(log);
+      return logResult;
+    }));
+
+    return result;
   } catch (err) {
     throw err;
   }
 }
 
-const transformDay = async day => {
+const transformDay = async (day, expandLogs) => {
   return {
     ...day._doc,
     date: transformDate(day._doc.date),
     startTime: transformDate(day._doc.startTime),
     endTime: transformDate(day._doc.endTime),
-    logs: transformLogs.bind(this, day._doc.logs)
+    logs: expandLogs ? transformLogs.bind(this, day._doc.logs) : day._doc.logs
+  }
+}
+
+const singleDay = async (dayID, expandLogs) => {
+  try {
+    const day = await Day.findById(dayID);
+
+    return transformDay(day, expandLogs);
+  } catch (err) {
+    throw err;
   }
 }
 
@@ -49,14 +62,16 @@ const transformDays = async dayIDs => {
   try {
     const days = await Day.find({ _id: { $in: dayIDs } });
 
-    return days.map(day => {
-      return transformDay(day);
-    });
+    return Promise.all(days.map(async day => {
+      return await singleDay(day, true);
+    }));
   } catch (err) {
     throw err;
   }
 }
 
+exports.singleDay = singleDay;
+exports.singleLog = singleLog;
 exports.transformDay = transformDay;
 exports.transformLog = transformLog;
 exports.transformDays = transformDays;

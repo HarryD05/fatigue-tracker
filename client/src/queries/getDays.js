@@ -9,6 +9,8 @@ const getDays = gql`
       endTime
       initMentTiredness
       initPhysTiredness
+      endMentTiredness
+      endPhysTiredness
       avgMentTiredness
       avgPhysTiredness
       logs {
@@ -16,8 +18,10 @@ const getDays = gql`
         startTime
         endTime
         category
-        physTiredness
-        mentTiredness
+        initPhysTiredness
+        initMentTiredness
+        endPhysTiredness
+        endMentTiredness
       }
     }
   }
