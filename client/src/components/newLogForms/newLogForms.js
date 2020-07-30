@@ -14,7 +14,6 @@ import calculateAverages from './../../queries/calculateAverages';
 
 //Styling
 import './newLogForms.scss';
-import DayTile from '../dayTile/dayTile';
 
 const NewLogForms = props => {
   const [initLog, setInitLog] = useState({

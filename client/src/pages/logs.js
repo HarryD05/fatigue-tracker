@@ -15,12 +15,12 @@ const Logs = props => {
   const { loading, days } = props.data;
 
   return (
-    <div className='logs'>
+    <main className='logs'>
       <h1>Logs</h1>
 
       {loading && <h2 className="loading">Loading...</h2>}
-      {days && days.map(day => <DayTile key={day._id} day={day} />)}
-    </div>
+      {days && days.map(day => <DayTile key={day._id} day={day} {...props} />)}
+    </main>
   )
 }
 

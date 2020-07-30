@@ -34,16 +34,16 @@ const Today = props => {
   }
 
   return (
-    <div className="today">
+    <main className="today">
       <h1>Today</h1>
       <h2>{formatDate(new Date())}</h2>
       <br />
 
       {loading ? <h2 className="loading">Loading...</h2> : null}
-      {!loading && needToInit ? <InitDayForm onComplete={onSubmit} /> : null}
-      {!loading && !needToInit && today && !completed ? <NewLogForms onComplete={onSubmit} isFirstLog={firstLog} startTime={today.startTime} /> : null}
+      {!loading && needToInit ? <InitDayForm onComplete={onSubmit} {...props} /> : null}
+      {!loading && !needToInit && today && !completed ? <NewLogForms onComplete={onSubmit} isFirstLog={firstLog} startTime={today.startTime} {...props} /> : null}
       {!loading && !needToInit && completed ? <h2>Completed</h2> : null}
-    </div>
+    </main>
   )
 }
 

@@ -13,7 +13,7 @@ const CatTimings = props => {
   let categoryHTML = '';
 
   let count = -1;
-  props.timeSpent.map(time => {
+  props.timeSpent.forEach(time => {
     count++;
     categoryHTML += `
       <div className="category">

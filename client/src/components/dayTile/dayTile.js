@@ -14,8 +14,6 @@ const DayTile = props => {
   const { day } = props;
   const [isExpanded, setIsExpanded] = useState(false);
 
-  console.log(day);
-
   const dayString = formatDate(new Date(day.startTime));
   const awakeTime = formatTime(new Date(day.startTime));
   const bedTime = day.endTime ? formatTime(new Date(day.endTime)) : 'Not yet submitted';
@@ -51,10 +49,14 @@ const DayTile = props => {
 
         <div className="categories-container">
           <h3>Time spent on each category</h3><br />
-          <CatTimings timeSpent={timeSpent} />
+          <CatTimings timeSpent={timeSpent} {...props} />
         </div>
       </div>
     )
+  }
+
+  const showDayLogs = () => {
+    props.history.push(`/logs/${day._id}`);
   }
 
   return (
@@ -62,10 +64,10 @@ const DayTile = props => {
       <h2>{dayString}</h2>
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-      >See more details...</button>
+      >Summary</button>
       <button
-        onClick={() => alert('Not implemented yet....')}
-      >See all logs</button>
+        onClick={showDayLogs}
+      >See all logs...</button>
 
       {isExpanded ? renderDetails() : null}
     </div>

@@ -1,7 +1,7 @@
 const Day = require('../../models/DayModel');
 const Log = require('../../models/LogModel');
 
-const { transformDay, transformLogs } = require('./merge');
+const { transformDay, transformLogs, singleDay } = require('./merge');
 
 module.exports = {
   days: async (args, req) => {
@@ -11,6 +11,17 @@ module.exports = {
       return result.map(day => {
         return transformDay(day, true);
       });
+    } catch (err) {
+      throw err;
+    }
+  },
+  day: async (args, req) => {
+    const { dayId } = args;
+
+    try {
+      const result = await Day.findById(dayId);
+
+      return singleDay(result, true);
     } catch (err) {
       throw err;
     }
