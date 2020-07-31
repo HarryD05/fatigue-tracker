@@ -62,7 +62,7 @@ const NewLogForms = props => {
           updateInput: {
             physTiredness: Number(finalLog.physTiredness),
             mentTiredness: Number(finalLog.mentTiredness),
-            endTime: new Date()
+            endTime: new Date(finalLog.endTime)
           }
         }
       }).then(() => {

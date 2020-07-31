@@ -10,9 +10,9 @@ import './logRow.scss';
 const categories = {
   0: 'Required',
   1: 'Rest',
-  2: 'Rehabilitation',
-  3: 'Socialising',
-  4: 'Non-productive'
+  2: 'Rehab',
+  3: 'Social',
+  4: 'Non-prod.'
 }
 
 const LogRow = props => {

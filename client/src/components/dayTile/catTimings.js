@@ -17,7 +17,7 @@ const CatTimings = props => {
     count++;
     categoryHTML += `
       <div className="category">
-        <b>${categories[count]}</b>: <p>${time} mins</p>
+        <b>${categories[count]}</b>: <p>${time.toFixed(2)} mins</p>
       </div>
     `
   })
