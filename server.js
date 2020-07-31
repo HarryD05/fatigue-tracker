@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const { graphqlHTTP } = require('express-graphql');
+const path = require('path');
 
 require('dotenv').config(); //.env file
 
@@ -25,6 +26,12 @@ app.use(
     graphiql: true,
   })
 );
+
+app.use(express.static('public'));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'public', 'index.html'));
+})
 
 //SETTING UP MONGOOSE
 console.log('Connecting to MongoDB');
