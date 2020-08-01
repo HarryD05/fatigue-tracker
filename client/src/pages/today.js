@@ -21,6 +21,7 @@ const Today = props => {
   let needToInit = true;
   let firstLog = false;
   let completed = false;
+
   if (today) {
     needToInit = (new Date(today.date).getDate() !== new Date().getDate());
     firstLog = today.logs.length === 0;

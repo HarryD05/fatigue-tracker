@@ -40,11 +40,11 @@ const LogRow = props => {
       <td>{log.initMentTiredness}</td>
       <td>{log.endMentTiredness}</td>
       <td>{mentDiff}</td>
-      <td>{(mentDiff / length).toFixed(2)}</td>
+      <td>{(mentDiff / length).toFixed(3)}</td>
       <td>{log.initPhysTiredness}</td>
       <td>{log.endPhysTiredness}</td>
       <td>{physDiff}</td>
-      <td>{(physDiff / length).toFixed(2)}</td>
+      <td>{(physDiff / length).toFixed(3)}</td>
     </tr>
   )
 }

@@ -6,6 +6,7 @@ import './dayTile.scss';
 
 //Components
 import CatTimings from './catTimings';
+import TirednessChart from './tirednessChart';
 
 //Helpers 
 import { formatDate, formatTime } from './../../helpers/date';
@@ -51,6 +52,8 @@ const DayTile = props => {
           <h3>Time spent on each category</h3><br />
           <CatTimings timeSpent={timeSpent} {...props} />
         </div>
+
+        <TirednessChart data={day} />
       </div>
     )
   }
@@ -62,12 +65,15 @@ const DayTile = props => {
   return (
     <div className="day-tile">
       <h2>{dayString}</h2>
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-      >Summary</button>
-      <button
-        onClick={showDayLogs}
-      >See all logs...</button>
+
+      <div className="buttons">
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+        >Summary</button>
+        <button
+          onClick={showDayLogs}
+        >All logs</button>
+      </div>
 
       {isExpanded ? renderDetails() : null}
     </div>

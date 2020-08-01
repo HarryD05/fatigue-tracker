@@ -4,22 +4,29 @@
 
   text-align: left;
 
-  h2, button {
-    display: inline;
+  h2 {
+    text-align: center;
   }
   
   h3, h4, p {
     display: inline;
   }
 
-  .averages, .categories-container, button {
+  .averages, .categories-container, .tiredness-chart, button {
     margin-top: 0.5rem;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
   }
 
   button {
     outline: none;
     border: none;
     border-radius: 8px;
+
+    width: 6rem;
     
     background: var(--primary-fg);
 

@@ -62,7 +62,7 @@ const NewLogForms = props => {
           updateInput: {
             physTiredness: Number(finalLog.physTiredness),
             mentTiredness: Number(finalLog.mentTiredness),
-            endTime: new Date(finalLog.endTime)
+            endTime: new Date(new Date().toDateString() + " " + finalLog.endTime)
           }
         }
       }).then(() => {
@@ -116,7 +116,7 @@ const NewLogForms = props => {
   return (
     <div className="log-forms">
       <form id="init-log" onSubmit={e => submitHandler(e, false)}>
-        <h1>New Log</h1>
+        <h2 className="header">New Log</h2>
         <div className="form-group">
           <label htmlFor="category">Category</label>
           <select name="category" onChange={e => changeHandler(e, false)}>
@@ -144,7 +144,7 @@ const NewLogForms = props => {
       </form>
 
       <form id="bedtime-form" onSubmit={e => submitHandler(e, true)}>
-        <h1>Final log</h1>
+        <h2 className="header">Final log</h2>
         <div className="form-group">
           <label htmlFor="endTime">Bed time: </label>
           <input type="time" name="endTime" onChange={e => changeHandler(e, true)} />
