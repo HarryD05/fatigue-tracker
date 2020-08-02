@@ -129,7 +129,7 @@ const NewLogForms = props => {
       <form id="init-log" onSubmit={e => submitHandler(e, false)}>
         <h2 className="header">New Log</h2>
         <div className="form-group">
-          <label htmlFor="category">Category</label>
+          <label htmlFor="category">Category</label><br />
           <select name="category" onChange={e => changeHandler(e, false)}>
             <option value={0}>Required</option>
             <option value={1}>Rest</option>
@@ -158,7 +158,7 @@ const NewLogForms = props => {
       <form id="bedtime-form" onSubmit={e => submitHandler(e, true)}>
         <h2 className="header">Final log</h2>
         <div className="form-group">
-          <label htmlFor="endTime">Bed time: </label>
+          <label htmlFor="endTime">Bed time: </label><br />
           <input type="time" name="endTime" onChange={e => changeHandler(e, true)} />
         </div>
 

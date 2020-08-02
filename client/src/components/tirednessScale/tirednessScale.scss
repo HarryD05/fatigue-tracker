@@ -8,7 +8,7 @@
   .container {
     display: block;
     position: relative;
-    padding-left: 16px;
+    padding-left: 30px;
     margin: 0;
     cursor: pointer;
     font-size: 22px;
@@ -19,8 +19,8 @@
     
     p {
       position: relative;
-      top: 24px;
-      right: 10px;
+      top: 30px;
+      right: 22px;
     }
 
     /* Hide the browser's default radio button */
@@ -37,8 +37,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: 25px;
-      width: 25px;
+      height: 30px;
+      width: 30px;
       background-color: #eee;
       border-radius: 50%;
     }
