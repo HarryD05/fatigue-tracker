@@ -47,11 +47,14 @@ const TirednessChart = props => {
       <Line
         data={chartData}
         options={{
+          responsive: true,
           maintainAspectRatio: true,
           scales: {
             yAxes: [{
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                suggestedMax: 6,
+                stepSize: 1
               }
             }],
             xAxes: [{
