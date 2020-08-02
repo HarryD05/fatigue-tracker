@@ -12,6 +12,9 @@ import completeLogs from './../../queries/completeLogs';
 import setBedTime from './../../queries/setBedTime';
 import calculateAverages from './../../queries/calculateAverages';
 
+//Components
+import TirednessScale from './../tirednessScale/tirednessScale';
+
 //Styling
 import './newLogForms.scss';
 
@@ -81,6 +84,10 @@ const NewLogForms = props => {
     e.preventDefault();
 
     if (isFinal) {
+      if (finalLog.mentTiredness === null || finalLog.physTiredness === null || finalLog.endTime === null) {
+        return;
+      }
+
       props.setBedTime({
         variables: {
           time: new Date(new Date().toDateString() + " " + finalLog.endTime)
@@ -89,6 +96,10 @@ const NewLogForms = props => {
         updateLogFunc(true);
       })
     } else {
+      if (initLog.mentTiredness === null || initLog.physTiredness === null) {
+        return;
+      }
+
       if (props.isFirstLog) {
         props.initLog({
           variables: {
@@ -129,13 +140,14 @@ const NewLogForms = props => {
         </div>
 
         <div className="form-group">
+          <em>Remember 0 means not tired at all, 6 means completely drained</em><br />
           <label htmlFor="physTiredness">physical tiredness: </label>
-          <input type="range" min="0" max="9" step="1" defaultValue="9" name="physTiredness" onChange={e => changeHandler(e, false)} />
+          <TirednessScale name="physTiredness" radioChange={e => changeHandler(e, false)} />
         </div>
 
         <div className="form-group">
           <label htmlFor="mentTiredness">mental tiredness: </label>
-          <input type="range" min="0" max="9" step="1" defaultValue="9" name="mentTiredness" onChange={e => changeHandler(e, false)} />
+          <TirednessScale name="mentTiredness" radioChange={e => changeHandler(e, false)} />
         </div>
 
         <div className="init-container">
@@ -151,13 +163,14 @@ const NewLogForms = props => {
         </div>
 
         <div className="form-group">
+          <em>Remember 0 means not tired at all, 6 means completely drained</em><br />
           <label htmlFor="physTiredness">physical tiredness: </label>
-          <input type="range" min="0" max="9" step="1" defaultValue="9" name="physTiredness" onChange={e => changeHandler(e, true)} />
+          <TirednessScale name="physTiredness" radioChange={e => changeHandler(e, true)} />
         </div>
 
         <div className="form-group">
           <label htmlFor="mentTiredness">mental tiredness: </label>
-          <input type="range" min="0" max="9" step="1" defaultValue="9" name="mentTiredness" onChange={e => changeHandler(e, true)} />
+          <TirednessScale name="mentTiredness" radioChange={e => changeHandler(e, true)} />
         </div>
 
         <div className="init-container">

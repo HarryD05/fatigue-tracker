@@ -28,6 +28,7 @@ const Home = props => {
         <li>Select what type of activity it is</li>
         <li>Log your current tiredness (physical & mental)</li>
       </ul>
+      <li>The tiredness scale is from 0-6, 0 being excellent, 6 being completely drained</li>
     </main>
   )
 }

@@ -1,0 +1,68 @@
+.tiredness-scale {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+
+  /* Customize the label (the container) */
+  .container {
+    display: block;
+    position: relative;
+    padding-left: 16px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    
+    p {
+      position: relative;
+      top: 24px;
+      right: 10px;
+    }
+
+    /* Hide the browser's default radio button */
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      height: 0;
+      width: 0;
+    }
+
+    /* Create a custom radio button */
+    .radio {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: #eee;
+      border-radius: 50%;
+    }
+
+    &:hover input ~ .radio {
+      background-color: #ccc;
+    }
+
+    /* When the radio button is checked, add a blue background */
+    input:checked ~ .radio {
+      background-color: #2196F3;
+    }
+
+    .radio:after {
+      content: "";
+      position: absolute;
+      display: none;
+    }
+
+    input:checked ~ .radio:after {
+      display: block;
+    }
+
+    
+  }
+}
+
