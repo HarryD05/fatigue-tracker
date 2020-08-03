@@ -9,6 +9,7 @@ import Home from './pages/home';
 import Today from './pages/today';
 import Logs from './pages/logs';
 import LogDetails from './pages/logDetails';
+import Analysis from './pages/analysis';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/today" component={Today} />
         <Route exact path="/logs" component={Logs} />
         <Route path="/logs/:id" component={LogDetails} />
+        <Route path="/analysis" component={Analysis} />
       </Switch>
     </div>
   );
