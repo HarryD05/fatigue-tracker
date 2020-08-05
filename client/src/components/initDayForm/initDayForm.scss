@@ -1,3 +1,14 @@
 form {
   text-align: center;
+
+  .form-group {
+    &.spacing-t {
+      margin-top: 1rem;
+    }
+
+    &.spacing-b {
+      margin-bottom: 1rem;
+    }
+  }
+
 }

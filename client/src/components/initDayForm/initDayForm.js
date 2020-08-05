@@ -51,26 +51,26 @@ const InitDayForm = props => {
     <form id="init-day" onSubmit={submitForm}>
 
       <div className="form-group">
-        <label htmlFor="startTime">Woke up: </label><br />
+        <label htmlFor="startTime"><b>Woke up: </b></label><br />
         <input type="time" name="startTime" onChange={changeHandler}></input>
       </div>
 
-      <div className="form-group">
-        <em>Remember 0 means not tired at all, 6 means completely drained</em><br />
-        <label htmlFor="initPhysTiredness">Initial physical tiredness: </label>
-        {/*<input type="range" min="0" max="9" step="1" name="initPhysTiredness" onChange={changeHandler}></input>*/}
+      <em>Remember 0 means not tired at all, 6 means completely drained</em><br />
+
+      <div className="form-group spacing-t spacing-b">
+        <label htmlFor="initPhysTiredness">Initial <b style={{ color: '#33f' }}>PHYSICAL </b>tiredness: </label>
         <TirednessScale name="initPhysTiredness" radioChange={changeHandler} />
       </div>
 
-      <div className="form-group">
-        <label htmlFor="initMentTiredness">Initial mental tiredness: </label>
+      <div className="form-group spacing-t" >
+        <label htmlFor="initMentTiredness">Initial <b style={{ color: '#060' }}>MENTAL </b>tiredness: </label>
         <TirednessScale name="initMentTiredness" radioChange={changeHandler} />
       </div>
 
       <div className="init-container">
-        <button type="submit">Initialise new day</button>
+        <button type="submit"><b>Initialise new day</b></button>
       </div>
-    </form>
+    </form >
   )
 }
 

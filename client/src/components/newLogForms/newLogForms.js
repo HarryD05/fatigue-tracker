@@ -129,7 +129,7 @@ const NewLogForms = props => {
       <form id="init-log" onSubmit={e => submitHandler(e, false)}>
         <h2 className="header">New Log</h2>
         <div className="form-group">
-          <label htmlFor="category">Category</label><br />
+          <label htmlFor="category"><b>Category</b></label><br />
           <select name="category" onChange={e => changeHandler(e, false)}>
             <option value={0}>Required</option>
             <option value={1}>Rest</option>
@@ -140,13 +140,13 @@ const NewLogForms = props => {
         </div>
 
         <div className="form-group">
-          <em>Remember 0 means not tired at all, 6 means completely drained</em><br />
-          <label htmlFor="physTiredness">physical tiredness: </label>
+          <em>Remember 0 means not tired at all, 6 means completely drained</em><br /><br />
+          <label htmlFor="physTiredness"><b style={{ color: '#33f' }}>PHYSICAL</b> tiredness:</label>
           <TirednessScale name="physTiredness" radioChange={e => changeHandler(e, false)} />
         </div>
 
         <div className="form-group">
-          <label htmlFor="mentTiredness">mental tiredness: </label>
+          <label htmlFor="mentTiredness"><b style={{ color: '#060' }}>MENTAL</b> tiredness: </label>
           <TirednessScale name="mentTiredness" radioChange={e => changeHandler(e, false)} />
         </div>
 
@@ -158,18 +158,19 @@ const NewLogForms = props => {
       <form id="bedtime-form" onSubmit={e => submitHandler(e, true)}>
         <h2 className="header">Final log</h2>
         <div className="form-group">
-          <label htmlFor="endTime">Bed time: </label><br />
+          <label htmlFor="endTime"><b>Bed time:</b></label><br />
           <input type="time" name="endTime" onChange={e => changeHandler(e, true)} />
         </div>
 
-        <div className="form-group">
-          <em>Remember 0 means not tired at all, 6 means completely drained</em><br />
-          <label htmlFor="physTiredness">physical tiredness: </label>
+        <em>Remember 0 means not tired at all, 6 means completely drained</em><br />
+
+        <div className="form-group spacing-t spacing-b">
+          <label htmlFor="physTiredness"><b style={{ color: '#33f' }}>PHYSICAL</b> tiredness:</label>
           <TirednessScale name="physTiredness" radioChange={e => changeHandler(e, true)} />
         </div>
 
-        <div className="form-group">
-          <label htmlFor="mentTiredness">mental tiredness: </label>
+        <div className="form-group spacing-t">
+          <label htmlFor="mentTiredness"><b style={{ color: '#060' }}>MENTAL</b> tiredness: </label>
           <TirednessScale name="mentTiredness" radioChange={e => changeHandler(e, true)} />
         </div>
 

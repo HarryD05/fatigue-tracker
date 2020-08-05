@@ -16,10 +16,10 @@ const Home = props => {
       <h2>Types of activity: </h2>
       <ul>
         <li><b>Required</b> e.g. eating, showering & time with helpers</li>
-        <li><b>Resting</b> e.g. napping in bed or sitting with no stimulation</li>
+        <li><b>Resting</b> e.g. napping in bed, sitting with no stimulation or in the garden with no activity</li>
         <li><b>Rehabilitation</b> e.g. physio & exercise</li>
         <li><b>Socialising</b> e.g. phone call, facebook portal, facetime & posting on facebook</li>
-        <li><b>Non-productive</b> e.g. reading, watching TV, listening to radio & browsing facebook</li>
+        <li><b>Non-productive</b> e.g. reading, watching TV, listening to radio & browsing facebook, sudoko</li>
       </ul>
 
       <h2>Logs</h2>
