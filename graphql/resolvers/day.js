@@ -31,7 +31,7 @@ module.exports = {
       const result = await Day.find();
 
       if (result.length > 0) {
-        return transformDay(result[result.length - 1]);
+        return transformDay(result[result.length - 1], true);
       }
 
       return null;

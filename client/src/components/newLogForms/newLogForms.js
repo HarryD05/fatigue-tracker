@@ -14,6 +14,7 @@ import calculateAverages from './../../queries/calculateAverages';
 
 //Components
 import TirednessScale from './../tirednessScale/tirednessScale';
+import CurrentActivity from './../currentActivity/currentActivity';
 
 //Styling
 import './newLogForms.scss';
@@ -114,7 +115,6 @@ const NewLogForms = props => {
       } else {
         time = new Date(new Date().toDateString() + " " + initLog.startTime)
       }
-      console.log(time.toString())
 
       if (props.isFirstLog) {
         props.initLog({
@@ -142,6 +142,8 @@ const NewLogForms = props => {
 
   return (
     <div className="log-forms">
+      <CurrentActivity />
+
       <form id="init-log" onSubmit={e => submitHandler(e, false)}>
         <h2 className="header">New Log</h2>
         <div className="form-group">
@@ -199,7 +201,7 @@ const NewLogForms = props => {
           <button type="submit">Submit log</button>
         </div>
       </form>
-    </div>
+    </div >
   )
 }
 

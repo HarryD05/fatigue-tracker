@@ -23,8 +23,6 @@ const InitDayForm = props => {
       ...initInput,
       [e.target.name]: e.target.value
     })
-
-    console.log(initInput);
   }
 
   const submitForm = async e => {
