@@ -22,7 +22,8 @@ const NewLogForms = props => {
   const [initLog, setInitLog] = useState({
     category: null,
     physTiredness: 9,
-    mentTiredness: 9
+    mentTiredness: 9,
+    startTime: null
   });
 
   const [finalLog, setFinalLog] = useState({
@@ -48,12 +49,19 @@ const NewLogForms = props => {
   const updateLogFunc = isFinal => {
     if (!isFinal) {
       document.getElementById('init-log').reset();
+      let time = null;
+      if (initLog.startTime === null) {
+        time = new Date();
+      } else {
+        time = new Date(new Date().toDateString() + " " + initLog.startTime)
+      }
+
       props.updateLog({
         variables: {
           updateInput: {
             physTiredness: Number(initLog.physTiredness),
             mentTiredness: Number(initLog.mentTiredness),
-            endTime: new Date()
+            endTime: time
           }
         }
       }).then(() => {
@@ -100,12 +108,20 @@ const NewLogForms = props => {
         return;
       }
 
+      let time = null;
+      if (initLog.startTime === null) {
+        time = new Date();
+      } else {
+        time = new Date(new Date().toDateString() + " " + initLog.startTime)
+      }
+      console.log(time.toString())
+
       if (props.isFirstLog) {
         props.initLog({
           variables: {
             initInput: {
               category: 0,
-              startTime: new Date(props.startTime)
+              startTime: time
             }
           }
         })
@@ -115,7 +131,7 @@ const NewLogForms = props => {
         variables: {
           initInput: {
             category: Number(initLog.category),
-            startTime: new Date()
+            startTime: time
           }
         }
       }).then(() => {
@@ -128,6 +144,11 @@ const NewLogForms = props => {
     <div className="log-forms">
       <form id="init-log" onSubmit={e => submitHandler(e, false)}>
         <h2 className="header">New Log</h2>
+        <div className="form-group">
+          <label name="startTime"><b>Start time</b> <em>(Optional)</em></label><br />
+          <input type="time" name="startTime" onChange={e => changeHandler(e, false)} />
+        </div>
+
         <div className="form-group">
           <label htmlFor="category"><b>Category</b></label><br />
           <select name="category" onChange={e => changeHandler(e, false)}>

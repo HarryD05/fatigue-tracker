@@ -24,8 +24,13 @@ const LogDetails = props => {
   });
 
 
-
   const renderDay = day => {
+    if (day.logs) {
+      if (day.logs[day.logs.length - 1].endTime === null) {
+        day.logs.pop();
+      }
+    }
+
     return (
       <div className="day">
         <h1>{formatDate(new Date(day.date))}</h1>

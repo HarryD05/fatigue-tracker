@@ -60,7 +60,7 @@ module.exports = {
     };
 
     let logDetails = {
-      category: 0,
+      category: 1,
       startTime: new Date(startTime),
       endTime: null,
       initPhysTiredness,

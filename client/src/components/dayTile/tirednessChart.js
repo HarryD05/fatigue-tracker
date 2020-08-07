@@ -5,6 +5,7 @@ import { Line } from 'react-chartjs-2';
 const TirednessChart = props => {
   let { data } = props;
 
+
   if (data.endTime === null) {
     data.logs.pop();
   }
