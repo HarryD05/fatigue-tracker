@@ -10,14 +10,7 @@ import './currentActivity.scss';
 
 //Helpers
 import { formatTime } from './../../helpers/date';
-
-const categories = {
-  0: 'Required',
-  1: 'Rest',
-  2: 'Rehabilitation',
-  3: 'Socialising',
-  4: 'Non-productive'
-}
+import { categories } from './../../helpers/enum';
 
 const CurrentActivity = () => {
   let { loading, error, data } = useQuery(today);

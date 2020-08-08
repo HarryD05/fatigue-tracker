@@ -16,6 +16,9 @@ import calculateAverages from './../../queries/calculateAverages';
 import TirednessScale from './../tirednessScale/tirednessScale';
 import CurrentActivity from './../currentActivity/currentActivity';
 
+//Helpers
+import { categories } from './../../helpers/enum';
+
 //Styling
 import './newLogForms.scss';
 
@@ -140,6 +143,12 @@ const NewLogForms = props => {
     }
   }
 
+  const renderOptions = () => {
+    return categories.map((cat, index) => {
+      return <option key={index} value={index}>{cat}</option>
+    })
+  }
+
   return (
     <div className="log-forms">
       <CurrentActivity />
@@ -154,11 +163,7 @@ const NewLogForms = props => {
         <div className="form-group">
           <label htmlFor="category"><b>Category</b></label><br />
           <select name="category" onChange={e => changeHandler(e, false)}>
-            <option value={0}>Required</option>
-            <option value={1}>Rest</option>
-            <option value={2}>Rehabilitation</option>
-            <option value={3}>Socialising</option>
-            <option value={4}>Non-productive</option>
+            {renderOptions()}
           </select>
         </div>
 

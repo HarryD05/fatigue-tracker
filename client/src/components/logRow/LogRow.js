@@ -3,17 +3,10 @@ import React from 'react';
 
 //Helper
 import { formatTime } from './../../helpers/date';
+import { categories } from './../../helpers/enum';
 
 //Styling
 import './logRow.scss';
-
-const categories = {
-  0: 'Required',
-  1: 'Rest',
-  2: 'Rehab',
-  3: 'Social',
-  4: 'Non-prod.'
-}
 
 const LogRow = props => {
   const { log } = props;
