@@ -13,6 +13,14 @@ const DaySchema = new Schema({
   endTime: {
     type: Date,
   },
+  sleepQuality: {
+    type: Number,
+    required: true
+  },
+  sleepCause: {
+    type: Number,
+    required: true
+  },
   initPhysTiredness: {
     type: Number,
     required: true,

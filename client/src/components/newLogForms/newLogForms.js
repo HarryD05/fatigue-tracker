@@ -70,6 +70,12 @@ const NewLogForms = props => {
         }
       }).then(() => {
         props.onComplete('Log submitted!');
+        setInitLog({
+          category: null,
+          physTiredness: 9,
+          mentTiredness: 9,
+          startTime: null
+        })
       })
     } else {
       props.completeLogs({

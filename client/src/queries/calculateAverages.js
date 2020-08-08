@@ -7,6 +7,8 @@ const calculateAverages = gql`
       date
       startTime
       endTime
+      sleepQuality
+      sleepCause
       initPhysTiredness
       initMentTiredness
       endMentTiredness

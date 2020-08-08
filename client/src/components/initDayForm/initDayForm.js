@@ -6,7 +6,11 @@ import { graphql } from 'react-apollo';
 import initDay from './../../queries/initDay';
 
 //Components 
+import SleepQualityScale from '../sleepScales/sleepQualityScale';
 import TirednessScale from '../tirednessScale/tirednessScale';
+
+//Helpers
+import { sleepCause } from './../../helpers/enum';
 
 //Styling
 import './initDayForm.scss';
@@ -14,6 +18,8 @@ import './initDayForm.scss';
 const InitDayForm = props => {
   const [initInput, setInitInput] = useState({
     startTime: null,
+    sleepQuality: null,
+    sleepCause: 0,
     initPhysTiredness: 0,
     initMentTiredness: 0
   })
@@ -26,27 +32,51 @@ const InitDayForm = props => {
   }
 
   const submitForm = async e => {
-    if (initInput.initMentTiredness === null || initInput.initPhysTiredness === null || initInput.startTime === null) {
+    e.preventDefault();
+
+    if (initInput.initMentTiredness === null || initInput.sleepCause === null || initInput.sleepQuality === null || initInput.initPhysTiredness === null || initInput.startTime === null) {
+      alert('Please fill in all inputs');
       return;
     }
-
-    e.preventDefault();
 
     props.mutate({
       variables: {
         initDayInput: {
           startTime: new Date(new Date().toDateString() + " " + initInput.startTime),
+          sleepQuality: Number(initInput.sleepQuality),
+          sleepCause: Number(initInput.sleepCause),
           initPhysTiredness: Number(initInput.initPhysTiredness),
           initMentTiredness: Number(initInput.initMentTiredness)
         }
       }
     }).then(() => {
       props.onComplete();
+      return;
+    })
+
+
+  }
+
+  const renderOptions = () => {
+    return sleepCause.map((cause, index) => {
+      return <option key={index} value={index}>{cause}</option>
     })
   }
 
   return (
     <form id="init-day" onSubmit={submitForm}>
+
+      <div className="form-group">
+        <label htmlFor="sleepQuality"><b>Sleep quality</b></label><br />
+        <SleepQualityScale name="sleepQuality" radioChange={changeHandler} />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="sleepCause"><b>Worst cause of bad sleep</b></label><br />
+        <select name="sleepCause" onChange={changeHandler}>
+          {renderOptions()}
+        </select>
+      </div>
 
       <div className="form-group">
         <label htmlFor="startTime"><b>Woke up: </b></label><br />

@@ -10,6 +10,7 @@ import TirednessChart from './tirednessChart';
 
 //Helpers 
 import { formatDate, formatTime } from './../../helpers/date';
+import { sleepQuality, sleepCause } from './../../helpers/enum';
 
 const DayTile = props => {
   const { day } = props;
@@ -39,6 +40,13 @@ const DayTile = props => {
           <h3>Woke up: </h3><p>{awakeTime}</p>
           <br />
           <h3>Bed time: </h3><p>{bedTime}</p>
+        </div>
+
+        <div className="sleep">
+          <h3>Sleep</h3><br />
+          <h4>Sleep quality: </h4><p>{sleepQuality[day.sleepQuality]}</p>
+          <br />
+          <h4>Worst cause of bad sleep: </h4><p>{sleepCause[day.sleepCause]}</p>
         </div>
 
         <div className="averages">

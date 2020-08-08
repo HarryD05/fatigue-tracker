@@ -42,6 +42,8 @@ module.exports = {
   initDay: async (args, req) => {
     const {
       startTime,
+      sleepQuality,
+      sleepCause,
       initPhysTiredness,
       initMentTiredness,
     } = args.initDayInput;
@@ -50,6 +52,8 @@ module.exports = {
       date: new Date(),
       startTime: new Date(startTime),
       endTime: null,
+      sleepQuality,
+      sleepCause,
       initPhysTiredness,
       initMentTiredness,
       endPhysTiredness: null,

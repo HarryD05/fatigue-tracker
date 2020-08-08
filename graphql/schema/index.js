@@ -6,6 +6,8 @@ module.exports = buildSchema(`
     date: String
     startTime: String
     endTime: String
+    sleepQuality: Int
+    sleepCause: Int
     initPhysTiredness: Int
     initMentTiredness: Int
     endPhysTiredness: Int
@@ -28,6 +30,8 @@ module.exports = buildSchema(`
   
   input InitDayInput {
     startTime: String
+    sleepQuality: Int
+    sleepCause: Int
     initPhysTiredness: Int
     initMentTiredness: Int
   }

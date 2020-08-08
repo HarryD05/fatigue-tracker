@@ -7,6 +7,8 @@ const initDay = gql`
       date
       startTime
       endTime
+      sleepQuality
+      sleepCause
       initMentTiredness
       initPhysTiredness
       endMentTiredness
