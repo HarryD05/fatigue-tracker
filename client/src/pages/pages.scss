@@ -16,6 +16,16 @@
   h2 {
     margin-top: 1rem;
   }
+
+  ul {
+    padding-left: 24px;
+  }
+
+  a {
+    text-decoration: none;
+    color: #7200be;
+    font-weight: bold;
+  }
 }
 
 .today {
@@ -43,7 +53,7 @@
 }
 
 main {
-  width: 40rem;
+  width: 45rem;
   max-width: 80%;
   margin: auto;
 

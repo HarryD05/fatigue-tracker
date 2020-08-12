@@ -22,8 +22,10 @@ const CurrentActivity = () => {
 
         return (
           <div className="details">
-            <h3>Start time: </h3><span>{formatTime(new Date(log.startTime))}</span><br />
-            <h3>Category: </h3><span>{categories[log.category]}</span>
+            <h3>{formatTime(new Date(log.startTime))}</h3><br />
+            <h4>Category: </h4><span>{categories[log.category]}</span><br />
+            <h4>Physical tiredness: </h4><span>{log.initPhysTiredness}</span><br />
+            <h4>Mental tiredness: </h4><span>{log.initMentTiredness}</span>
           </div>
         )
       }
@@ -32,7 +34,7 @@ const CurrentActivity = () => {
 
   return (
     <div className="current-activity">
-      <h2>Current activity</h2>
+      <h2>Previous Log</h2>
       {loading ? <h2 className="loading">Loading...</h2> : null}
       {error ? <h2 className="error">ERROR</h2> : null}
       {!loading && !error ? renderDetails() : null}

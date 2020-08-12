@@ -9,7 +9,7 @@ const TirednessScale = props => {
     const scale = [0, 1, 2, 3, 4, 5, 6];
     return scale.map(num => {
       return (
-        <label className="container"><p>{num}</p>
+        <label className="container" key={num}><p>{num}</p>
           <input type="radio" name={props.name} value={num} onChange={props.radioChange} />
           <span className="radio big"></span>
         </label>

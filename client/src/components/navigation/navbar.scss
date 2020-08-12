@@ -23,10 +23,17 @@ nav {
       text-decoration: none;
       color: var(--primary-fg);
     }
+
+    @media (max-width: 450px) {
+      h1 {
+        font-size: 1rem;
+      }
+    }
   }
 
   .links {
     margin-left: auto;
+
     height: 100%;
 
     ul {

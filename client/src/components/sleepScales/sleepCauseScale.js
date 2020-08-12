@@ -11,7 +11,7 @@ const SleepCauseScale = props => {
   const renderScale = () => {
     return sleepCause.map((cause, index) => {
       return (
-        <label className="container">
+        <label className="container" key={index}>
           <input type="radio" name={props.name} value={index} onChange={props.radioChange} />
           <span className="radio"></span>
         </label>

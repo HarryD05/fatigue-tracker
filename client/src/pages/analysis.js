@@ -7,7 +7,9 @@ const Analysis = props => {
   return (
     <main className="analysis">
       <h1>Analysis</h1>
-      <p>Will be added in the near future...</p>
+      <h2>Causes of bad sleep</h2><span>Coming soon...</span>
+      <br /><br />
+      <h2>Effects of each category</h2><span>Coming soon...</span>
     </main>
   )
 }

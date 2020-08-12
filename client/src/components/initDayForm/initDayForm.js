@@ -20,8 +20,8 @@ const InitDayForm = props => {
     startTime: null,
     sleepQuality: null,
     sleepCause: 0,
-    initPhysTiredness: 0,
-    initMentTiredness: 0
+    initPhysTiredness: null,
+    initMentTiredness: null
   })
 
   const changeHandler = e => {

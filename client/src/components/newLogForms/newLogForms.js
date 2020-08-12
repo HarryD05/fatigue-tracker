@@ -25,15 +25,15 @@ import './newLogForms.scss';
 const NewLogForms = props => {
   const [initLog, setInitLog] = useState({
     category: null,
-    physTiredness: 9,
-    mentTiredness: 9,
+    physTiredness: null,
+    mentTiredness: null,
     startTime: null
   });
 
   const [finalLog, setFinalLog] = useState({
     endTime: null,
-    physTiredness: 9,
-    mentTiredness: 9
+    physTiredness: null,
+    mentTiredness: null
   });
 
   const changeHandler = (e, isFinal) => {
@@ -72,8 +72,8 @@ const NewLogForms = props => {
         props.onComplete('Log submitted!');
         setInitLog({
           category: null,
-          physTiredness: 9,
-          mentTiredness: 9,
+          physTiredness: null,
+          mentTiredness: null,
           startTime: null
         })
       })

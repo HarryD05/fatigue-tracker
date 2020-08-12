@@ -13,7 +13,7 @@ const SleepQualityScale = props => {
       let classes = "radio " + String(quality).toLowerCase();
 
       return (
-        <label className="container">
+        <label className="container" key={index}>
           <input type="radio" name={props.name} value={index} onChange={props.radioChange} />
           <span className={classes}></span>
         </label>
