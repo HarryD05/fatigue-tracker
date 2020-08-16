@@ -1,5 +1,6 @@
 //React dependencies
 import React from 'react';
+import { round } from 'lodash';
 
 const CategoryRow = props => {
   const { data } = props;
@@ -14,13 +15,30 @@ const CategoryRow = props => {
     }
   }
 
-  const renderPhysical = () => <td style={chooseColour(data.physicalRate)}>{(data.physicalRate).toFixed(3)}</td>;
-  const renderMental = () => <td style={chooseColour(data.mentalRate)}>{(data.mentalRate).toFixed(3)}</td>;
+  const renderName = name => {
+    let output = name;
+    if (name === 'Rehabilitation') output = 'Rehab';
+    else if (name === 'Non-productive') output = 'Non-prod';
+
+    return <td>{output}</td>;
+  }
+
+  const renderRate = rate => {
+    if (isNaN(rate)) return <td>NO DATA</td>;
+    else return <td style={chooseColour(rate)}>{round((rate * 1000))}</td>;
+  }
 
   return (
     <tr>
-      <td>{data.name}</td>
-      {props.isPhysical === true ? renderPhysical() : renderMental()}
+      {renderName(data.name)}
+      {data.data.map((val, i) => {
+        return (
+          <React.Fragment key={i}>
+            {renderRate(val.physicalRate)}
+            {renderRate(val.mentalRate)}
+          </React.Fragment>
+        )
+      })}
     </tr>
   )
 }

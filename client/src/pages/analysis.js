@@ -55,6 +55,7 @@ const Analysis = props => {
 
       <div className="tab">
         <h2>Effects of each category on tiredness</h2>
+        <p>(at different times of the day)</p>
         <button onClick={toggleCategoryImpact}>Toggle</button><br />
         {isCategoriesExpanded ? renderCategoryImpact() : null}
       </div>
