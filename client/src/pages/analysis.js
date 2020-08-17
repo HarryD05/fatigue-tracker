@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 //Components
 import SleepChart from './../components/sleepChart/sleepChart';
 import CategoryImpact from './../components/categoryImpact/categoryImpact';
+import StartingTiredness from './../components/startingTiredness/startingTiredness';
+import ActivityRehab from './../components/activityRehab/activityRehab';
 
 //Styling
 import './pages.scss';
@@ -20,6 +22,8 @@ const Analysis = props => {
 
   const [isSleepCauseExpanded, setIsSleepCauseExpanded] = useState(false);
   const [isCategoriesExpanded, setIsCategoriesExpanded] = useState(false);
+  const [isStartTiredExpanded, setIsStartTiredExpanded] = useState(false);
+  const [isActivityRehabExpanded, setIsActivityRehabExpanded] = useState(false);
 
   const renderSleepCause = () => {
     return (
@@ -30,7 +34,6 @@ const Analysis = props => {
       </>
     )
   }
-  const toggleSleepCause = () => setIsSleepCauseExpanded(!isSleepCauseExpanded);
 
   const renderCategoryImpact = () => {
     return (
@@ -41,7 +44,31 @@ const Analysis = props => {
       </>
     )
   }
+
+  const renderStartTiredness = () => {
+    return (
+      <>
+        {loadingLogs ? <h2 className="loading">Loading...</h2> : null}
+        {errorLogs ? <h2 className="error">ERROR (refresh page)</h2> : null}
+        {!loadingLogs && !errorLogs ? <StartingTiredness logs={logs} /> : null}
+      </>
+    )
+  }
+
+  const renderActivityRehab = () => {
+    return (
+      <>
+        {loadingLogs ? <h2 className="loading">Loading...</h2> : null}
+        {errorLogs ? <h2 className="error">ERROR (refresh page)</h2> : null}
+        {!loadingLogs && !errorLogs ? <ActivityRehab logs={logs} /> : null}
+      </>
+    )
+  }
+
+  const toggleSleepCause = () => setIsSleepCauseExpanded(!isSleepCauseExpanded);
   const toggleCategoryImpact = () => setIsCategoriesExpanded(!isCategoriesExpanded);
+  const toggleStartTiredness = () => setIsStartTiredExpanded(!isStartTiredExpanded);
+  const toggleActivityRehab = () => setIsActivityRehabExpanded(!isActivityRehabExpanded);
 
   return (
     <main className="analysis">
@@ -59,6 +86,20 @@ const Analysis = props => {
         <button onClick={toggleCategoryImpact}>Toggle</button><br />
         {isCategoriesExpanded ? renderCategoryImpact() : null}
       </div>
+
+      <div className="tab">
+        <h2>Effect of starting tiredness on rehabilitation</h2>
+        <button onClick={toggleStartTiredness}>Toggle</button>
+        {isStartTiredExpanded ? renderStartTiredness() : null}
+      </div>
+
+      <div className="tab">
+        <h2>Effect of previous activity's category + duration on rehabilitation</h2>
+        <button onClick={toggleActivityRehab}>Toggle</button>
+        {isActivityRehabExpanded ? renderActivityRehab() : null}
+      </div>
+
+
     </main>
   )
 }

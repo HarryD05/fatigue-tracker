@@ -34,8 +34,8 @@ const CategoryRow = props => {
       {data.data.map((val, i) => {
         return (
           <React.Fragment key={i}>
-            {renderRate(val.physicalRate)}
             {renderRate(val.mentalRate)}
+            {renderRate(val.physicalRate)}
           </React.Fragment>
         )
       })}

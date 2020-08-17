@@ -34,7 +34,7 @@ const SleepChart = props => {
         <p>Frequency of each cause of bad sleep</p>
         <Bar
           data={chartData}
-          height={200}
+          height={150}
           options={{
             responsive: true,
             scales: {
@@ -43,6 +43,7 @@ const SleepChart = props => {
                   min: 0,
                   beginAtZero: true,
                   fontColor: 'black',
+                  maxTicksLimit: 5
                 }
               }],
               xAxes: [{
